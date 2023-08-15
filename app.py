@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 
 from recipient_list_file.routers import recipient_router
-from mailing_list.routers import mailing_list
+from mailing.routers import mailing_list
 from settings_env import secrets_key_csrf
 
 app = Flask(__name__)
