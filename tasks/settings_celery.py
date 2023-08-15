@@ -5,6 +5,7 @@ from kombu import Queue
 app_celery = Celery(
     "tasks",
     broker=f"redis://{redis_host}:{redis_port}/{redis_db}",
+    backend=f"redis://{redis_host}:{redis_port}/{redis_db}",
     broker_connection_retry_on_startup=True  # отключает предупреждение
 )
 
