@@ -10,3 +10,4 @@ def record_update(email):
         record.status = "send"
         record.count_sent += 1
         db_session.commit()
+
