@@ -4,6 +4,8 @@ from recipient_list_file.utils import validate_file, inserting_data
 
 recipient_router = Blueprint("recipient", __name__, template_folder="templates", static_folder="static")
 
+_SAVE_PATH_FILE = "recipient_list_file/"
+
 
 @recipient_router.route('/recipient-file', methods=["GET", "POST"])
 def recipient_form():
@@ -11,9 +13,9 @@ def recipient_form():
     form = FileUploadForms()
     if request.method == "GET":
         return render_template("recipient_file_form.html", form=form)
-    elif request.method == "POST":
-        file_path = request.files.get("file")
-        result = validate_file(file_path, "email", "name")
-        if result:
-            inserting_data(result)
+
+    file_path = request.files.get("file")
+    result = validate_file(_SAVE_PATH_FILE, file_path, "email", "name")
+    if result:
+        inserting_data(result)
     return redirect(url_for("home"))
