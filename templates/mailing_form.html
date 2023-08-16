@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+    <h2 class="text-center mb-3">Mailing</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        {% for field in form %}
+            {% if field.type != "CSRFTokenField" %}
+                <div class="mt-2">
+                    {% if field.type == "FileField" %}
+                        {{ field(class="form-control", title=field.render_kw.placeholder) }}
+                    {% else %}
+                        {{ field(class="form-control", placeholder=field.render_kw.placeholder) }}
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div class="d-grid gap-2 mt-5">
+            <button type="submit" class="btn btn-primary btn-sm btn-block">Send mail</button>
+        </div>
+    </form>
+{% endblock %}
