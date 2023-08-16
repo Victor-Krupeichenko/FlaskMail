@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1 class="text-center">Report</h1>
+    <form action="{{ url_for('report.report_recipient') }}" method="post" class="mt-3 mb-5">
+        {{ form.hidden_tag() }}
+        {% for field in form %}
+            {% if field.type != "CSRFTokenField" %}
+                {{ field(class="form-control", placeholder=field.render_kw.placeholder) }}
+            {% endif %}
+        {% endfor %}
+        <div class="d-grid gap-2 mt-3">
+            <button type="submit" class="btn btn-primary btn-sm btn-block">Report</button>
+        </div>
+    </form>
+    {% if recipients %}
+        <form action="{{ url_for('report.download_report') }}" method="get">
+            <button type="submit" class="btn btn-primary btn-sm">Download Report</button>
+        </form>
+        {% include '_inc/_monitoring.html' %}
+    {% else %}
+        <h3 class="text-center">No Data</h3>
+    {% endif %}
+{% endblock %}
