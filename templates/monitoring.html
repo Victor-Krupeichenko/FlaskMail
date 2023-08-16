@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+    <h2 class="text-center mb-5">Monitoring</h2>
+    <div class="d-grid gap-2 mb-5">
+        <a href="{{ url_for('mailing.send_email_to_recipient') }}" class="btn btn-primary btn-sm btn-block">Send
+            Email</a>
+    </div>
+    {% include '_inc/_monitoring.html' %}
+{% endblock %}
