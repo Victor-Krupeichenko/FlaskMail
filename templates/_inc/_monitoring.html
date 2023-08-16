@@ -1,0 +1,22 @@
+<table class="table table-hover text-center">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">quantity of messages</th>
+        <th scope="col">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for recipient in recipients %}
+        <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td>{{ recipient.name }}</td>
+            <td>{{ recipient.email }}</td>
+            <td>{{ recipient.count_sent }}</td>
+            <td>{{ recipient.status }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
