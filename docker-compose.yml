@@ -1,0 +1,60 @@
+version: "3.7"
+services:
+  flask_mail_database:
+    image: postgres:15.3
+    container_name: flask_mail_database
+    restart: always
+    env_file:
+      - .env
+    command: -p 5420
+    ports:
+      - "5432:5420"
+    networks:
+      - flask_mail_project
+
+
+  redis_mail:
+    image: redis:7-alpine
+    container_name: redis_mail
+    restart: always
+    command: --port 6112
+    ports:
+      - "6112:6112"
+    networks:
+      - flask_mail_project
+
+
+  flask_mail:
+    build:
+      context: .
+    container_name: flask_mail
+    restart: always
+    env_file:
+      - .env
+    command: [ "/app/docker_start/start.sh" ]
+    ports:
+      - "5000:5000"
+    depends_on:
+      - flask_mail_database
+      - redis_mail
+    networks:
+      - flask_mail_project
+
+  celery_flower:
+    build:
+      context: .
+    container_name: celery_flower
+    restart: always
+    command: ["/app/docker_start/flower.sh"]
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis_mail
+      - flask_mail
+    networks:
+      - flask_mail_project
+
+networks:
+  flask_mail_project:
+    name: flask_mail_project
+    driver: bridge
