@@ -1,4 +1,13 @@
 # FlaskMail
+![Python](https://img.shields.io/badge/-Python-f1f518?style=flat-square&logo=python)
+![Fkask](https://img.shields.io/badge/-Flask-74cf3c?style=flat-square&logo=flask) 
+![Bootstrap](https://img.shields.io/badge/-Bootstrap-ce62f5?style=flat-square&logo=bootstrap)
+![Celery](https://img.shields.io/badge/-Celery-37814A?style=flat-square&logo=Celery)  
+![Docker](https://img.shields.io/badge/-Docker-1de4f2?style=flat-square&logo=docker)  
+![Redis](https://img.shields.io/badge/-Redis-f78b97?style=flat-square&logo=redis)
+![Postgresql](https://img.shields.io/badge/-Postgresql-1de4f2?style=flat-square&logo=postgresql)  
+![SQLAlchemy](https://img.shields.io/badge/-SQLAlchemy-ba7378?style=flat-square&logo=sqlalchemy)
+![Alembic](https://img.shields.io/badge/-Alembic-80cced?style=flat-square&logo=Alembic)
 
 Приложение для отправки email по списку получателей
 
